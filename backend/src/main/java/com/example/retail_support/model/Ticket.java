@@ -23,7 +23,7 @@ private String associateId;
 private String associateName;
 
 @Column(name = "associate_email")
-private String assocaiteEmail;
+private String associateEmail;
 
 @Column(name = "store_number")
 private String storeNumber;
@@ -62,11 +62,11 @@ this.associateName = associateName;
 }
 
 public String getAssociateEmail(){
-    return assocaiteEmail;
+    return associateEmail;
 }
 
 public void setAssociateEmail(String associateEmail){
-this.assocaiteEmail = associateEmail;
+this.associateEmail = associateEmail;
 }
 public String getStoreNumber(){
     return storeNumber;

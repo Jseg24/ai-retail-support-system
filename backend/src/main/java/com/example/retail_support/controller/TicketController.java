@@ -26,4 +26,16 @@ public class TicketController {
 public List<Ticket> getAllTickets() {
     return ticketService.findAll();
 }
+@PatchMapping("/{id}/approve")
+public Ticket approveTicket(@PathVariable Long id){
+    return ticketService.approveTicket(id);
+}
+@PatchMapping ("/{id}/reject")
+public Ticket rejectTicket(@PathVariable Long id){
+    return ticketService.rejectTicket(id);
+}
+@DeleteMapping("/{id}/delete")
+  public Ticket deleteTicket(@PathVariable Long id){
+    return ticketService.deleteTicket(id);
+  }
 }
