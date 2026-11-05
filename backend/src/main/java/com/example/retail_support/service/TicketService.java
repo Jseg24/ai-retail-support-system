@@ -24,9 +24,10 @@ public TicketService(
 
 
     public Ticket createTicket(Ticket ticket){
-        ticket.setStatus("OPEN");
+        ticket.setStatus("PENDING_AI_REVIEW");
+       ticket =  ticketRepository.save(ticket);
     ticket = aiService.analyzeTicket(ticket);
-ticket.setStatus("PENDING_REVIEW");
+ticket.setStatus("PENDING_ADMIN_REVIEW");
   
         return ticketRepository.save(ticket);
     }

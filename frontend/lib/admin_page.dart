@@ -16,12 +16,7 @@ class AdminPage extends StatefulWidget {
 class _AdminPageState extends State<AdminPage> {
   List<dynamic> tickets = [];
   bool isLoading = true;
-
-
-
- 
-
-
+static const bool publicDemo = true;
 
   @override
   void initState() {
@@ -84,6 +79,7 @@ Future<void> deleteTicket(int id) async {
     if (response.statusCode == 200) {
       setState(() {
         final index = tickets.indexWhere((ticket) => ticket['id'] == id);
+        
         if (index != -1) {
           tickets[index]['status'] = 'APPROVED';
         }
@@ -116,15 +112,36 @@ Future<void> deleteTicket(int id) async {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(249, 99, 0, 1),
-        title: const Text(
-          'Admin Ticket Review',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+       title: Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    const Text(
+      'Admin Ticket Review',
+      style: TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    if (publicDemo)
+      const Text(
+        'Public Demo — Administrative Actions are Disabled.',
+        style: TextStyle(
+          color: Color.fromARGB(255, 0, 0, 0),
+          fontSize: 12, 
+          
+          fontWeight: FontWeight.bold,
         ),
       ),
-
+  ],
+),
+      ),
       body: isLoading
+      
           ? const Center(child: CircularProgressIndicator())
+          
           : ListView.builder(
+            
+            
               itemCount: tickets.length,
               itemBuilder: (context, index) {
                 final ticket = tickets[index];
@@ -133,7 +150,9 @@ Future<void> deleteTicket(int id) async {
                   margin: const EdgeInsets.symmetric(
                     horizontal: 24,
                     vertical: 8,
+                    
                   ),
+                  
                   child: Padding(
                     padding: const EdgeInsets.all(16),
                     child: Column(
@@ -163,25 +182,24 @@ Future<void> deleteTicket(int id) async {
                           Row(
                             children: [
                               ElevatedButton(
-                                onPressed: () {
-                                  approveTicket(ticket['id']);
-                                },
-                                child: const Text('Approve'),
-                              ),
+  onPressed: publicDemo
+      ? null
+      : () => approveTicket(ticket['id']),
+  child: const Text('Approve'),
+),
                               const SizedBox(width: 12),
 
-                              ElevatedButton(
-                                onPressed: () {
-                                  rejectTicket(ticket['id']);
-                                },
-                                child: const Text('Reject'),
-                                
-                              ),
+                             ElevatedButton(
+  onPressed: publicDemo
+      ? null
+      :() => rejectTicket(ticket['id']),
+  child: const Text('Reject'),
+)
                               
                             ],
                           ),
                           const SizedBox(height: 12),
-                          if(ticket['status'] == 'REJECTED')
+                          if(ticket['status'] == 'REJECTED' && !publicDemo)
                             ElevatedButton(
                               onPressed: () {
                                 showDialog(
@@ -191,13 +209,12 @@ Future<void> deleteTicket(int id) async {
                                     content: const Text('Are you sure you want to permanently delete this rejected ticket?'),
                                   
                                     actions: [
-                                      TextButton(
-                                        onPressed: () {Navigator.pop(context);
-                                        deleteTicket(ticket['id']);
-                                        
-                                        }, 
-                                        child: const Text('Delete'),
-                                      ),
+                                      ElevatedButton(
+  onPressed: publicDemo
+      ? null
+      :() => deleteTicket(ticket['id']),
+  child: const Text('Delete'),
+),
                                       TextButton(
                                         onPressed: ()=>
                                           Navigator.pop(context),
