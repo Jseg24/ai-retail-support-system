@@ -47,6 +47,7 @@ https://retail-support-project-511613.web.app/
 
 Administrative Review Page:
 https://retail-support-project-511613.web.app/#/admin
+
 *Demo note: The admin page may be slow to load initially as the cloud backend starts up.*
 
 
