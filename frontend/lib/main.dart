@@ -112,8 +112,10 @@ body: Center(
           ),
           TextField(
         controller: idController,
+        
         decoration: const InputDecoration(
-          labelText: 'Associate Id',
+          labelText: 'Associate Id (6 Digits)',
+          
         ),
       ),
       TextField(
@@ -123,22 +125,24 @@ body: Center(
         ),
       ),
       TextField(
+        
         controller: emailController,
         decoration: const InputDecoration(
-          labelText: 'Email',
+          labelText: 'Email must end in "@thecompany.com"',
+          labelStyle: TextStyle(fontSize:17),
         ),
       ),
       TextField(
         controller: storeController,
         decoration: const InputDecoration(
-          labelText: 'Store Number',
+          labelText: 'Store Number(4 digits)',
         ),
         ),
         TextField(
           controller: descriptionController,
           maxLines: 5,
           decoration: const InputDecoration(
-            labelText: 'Describe your issue',
+            labelText: 'Describe the problem...',
           ),
         ),
         const SizedBox(height: 20),
