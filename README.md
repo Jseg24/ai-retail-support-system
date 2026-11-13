@@ -39,7 +39,7 @@ Database:
 AI:
 -DeepSeek V4
 
-Public Demo
+Public Demo:
 *Administrative privileges are limited in the pulbic demo*
 
 Ticket Form:
