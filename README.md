@@ -1,11 +1,11 @@
 Retail Support System
 
--A simple AI powered retail support application that allows store associates to submit tickets and automatically classifies them using an external AI service.
--The project was inspired by retail support workflows I have encountered in a store enviornment.
+A simple AI powered retail support application that allows store associates to submit tickets and automatically classifies them using an external AI service.
+The project was inspired by retail support workflows I have encountered in a store enviornment.
 
-*It is an independent portfolio project and does not use any proprietary company data or systems*
+*This independent project does not use any proprietary company information*
 
-How It Works
+How It Works:
 1. A user submits a support ticket.
 2. The Spring Boot backend receives the request.
 3. The ticket is processed by an external AI service.
@@ -15,29 +15,15 @@ How It Works
 
 Tech Stack:
 
-Frontend:
--Flutter
--Firebase Hosting
+Frontend: Flutter, Firebase Hosting
 
-Backend:
--Java
--SpringBoot
--Spring Data JPA
--Maven
--Docker
+Backend: Java, SpringBoot, Spring Data JPA, Maven, Docker
 
-Cloud:
--Google Cloud Run
--Google Cloud SQL
--Google Artifact Registry
--Google Secret Manager
--Firebase Hosting
+Cloud: Google Cloud Run, Google Cloud SQL, Google Artifact Registry, Google Secret Manager, Firebase Hosting
 
-Database:
--MySQL
+Database: MySQL
 
-AI:
--DeepSeek V4
+AI: DeepSeek V4
 
 Public Demo:
 *Administrative privileges are limited in the pulbic demo*
